@@ -2,322 +2,589 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Amor Por Você ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>2 Anos com Maísa ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ffb3d9;
+            --bg: #1a0612;
+            --text: rgba(255, 255, 255, 0.95);
+            --text-muted: rgba(255, 200, 220, 0.8);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse at top, #4a1428 0%, transparent 60%),
+                radial-gradient(ellipse at bottom, #8b2450 0%, transparent 70%);
+            background-attachment: fixed;
             min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #1a0612 0%, #4a1428 50%, #8b2450 100%);
+            font-family: 'Raleway', sans-serif;
+            color: var(--text);
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Partículas de coração flutuantes */
+        /* Floating hearts */
         .heart-particle {
-            position: absolute;
-            color: rgba(255, 100, 150, 0.3);
-            font-size: 20px;
-            animation: floatHeart linear infinite;
+            position: fixed;
             pointer-events: none;
+            animation: floatHeart linear infinite;
+            z-index: 0;
         }
 
         @keyframes floatHeart {
-            0% {
-                transform: translateY(100vh) scale(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1.5) rotate(360deg);
-                opacity: 0;
-            }
+            0%   { transform: translateY(105vh) rotate(-10deg); opacity: 0; }
+            8%   { opacity: 0.35; }
+            92%  { opacity: 0.35; }
+            100% { transform: translateY(-10vh) rotate(10deg); opacity: 0; }
         }
 
-        #container {
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: 30px;
-            padding: 50px 40px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            max-width: 700px;
-            animation: containerFadeIn 1.2s ease-out;
-        }
-
-        @keyframes containerFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(40px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        #heart {
+            text-align: center;
+            padding: 48px 28px 80px;
             position: relative;
-            width: 120px;
-            height: 110px;
-            animation: pulse 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 10px 30px rgba(255, 50, 100, 0.6));
-            margin-bottom: 40px;
+            z-index: 10;
         }
 
-        #heart::before,
-        #heart::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 62px;
-            height: 95px;
-            border-radius: 60px 60px 0 0;
-            background: linear-gradient(135deg, #ff4d6d 0%, #ff758f 100%);
+        .hero-badge {
+            background: rgba(255, 77, 109, 0.15);
+            border: 1px solid rgba(255, 77, 109, 0.35);
+            border-radius: 50px;
+            padding: 7px 18px;
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 36px;
+            animation: fadeInDown 1s ease-out both;
         }
 
-        #heart::before {
-            left: 60px;
-            transform: rotate(-45deg);
-            transform-origin: 0 100%;
+        .hero-heart-wrap {
+            animation: fadeInUp 1s 0.2s ease-out both, pulse 1.8s 1.2s ease-in-out infinite;
+            margin-bottom: 36px;
+            filter: drop-shadow(0 8px 28px rgba(255, 50, 100, 0.65));
         }
 
-        #heart::after {
-            left: 0;
-            transform: rotate(45deg);
-            transform-origin: 100% 100%;
+        .heart-svg {
+            width: 72px;
+            height: 72px;
         }
 
         @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 8px 28px rgba(255,50,100,0.65)); }
+            50%       { transform: scale(1.18); filter: drop-shadow(0 12px 38px rgba(255,50,100,0.9)); }
         }
 
-        #message {
-            text-align: center;
-            font-family: 'Raleway', sans-serif;
-            color: #fff;
-            max-width: 600px;
-        }
-
-        #message p {
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-            margin: 0 0 25px 0;
-            line-height: 1.8;
-        }
-
-        #message p:nth-child(1) {
-            animation-delay: 0.5s;
+        .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: clamp(44px, 13vw, 72px);
             font-weight: 700;
-            margin-bottom: 35px;
-            background: linear-gradient(135deg, #fff 0%, #ffb3d9 100%);
+            line-height: 1.1;
+            background: linear-gradient(145deg, #fff 0%, #ffcfe3 55%, #ff758f 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(255, 100, 150, 0.3);
+            margin-bottom: 18px;
+            animation: fadeInUp 1s 0.4s ease-out both;
         }
 
-        #message p:not(:first-child) {
-            font-size: 18px;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.95);
-            text-align: justify;
-            text-align-last: center;
+        .hero-subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+            max-width: 300px;
+            animation: fadeInUp 1s 0.7s ease-out both;
         }
 
-        #message p:nth-child(2) {
-            animation-delay: 1s;
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: rgba(255, 180, 210, 0.5);
+            font-size: 12px;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s 1.4s ease-out both, bob 2.2s 2.4s ease-in-out infinite;
         }
 
-        #message p:nth-child(3) {
-            animation-delay: 1.5s;
+        .scroll-hint svg {
+            width: 22px;
+            height: 22px;
         }
 
-        #message p:nth-child(4) {
-            animation-delay: 2s;
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(7px); }
         }
 
-        #message p:nth-child(5) {
-            animation-delay: 2.5s;
+        /* ── SECTION HEADER ── */
+        .section-header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 8px 24px 32px;
         }
 
-        #message p:last-child {
-            animation-delay: 3s;
+        .section-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 26px;
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .section-header .line {
+            display: inline-block;
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin-top: 10px;
+        }
+
+        /* ── MOMENT CARDS ── */
+        .moments {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 0 16px 16px;
+        }
+
+        .moment {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+
+        .moment.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .moment-card {
+            background: rgba(255, 255, 255, 0.055);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .moment-photo {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .moment-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 77, 109, 0.08);
+            color: var(--text-muted);
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .moment-photo-placeholder span {
+            font-size: 36px;
+        }
+
+        .moment-body {
+            padding: 20px 18px 22px;
+        }
+
+        .moment-date {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 8px;
             font-weight: 600;
-            margin-top: 35px;
-            color: #ffb3d9;
+        }
+
+        .moment-caption {
+            font-size: 16px;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .moment-caption em {
+            color: var(--secondary);
             font-style: italic;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Botão de voltar */
-        .back-button {
-            margin-top: 40px;
-            animation: fadeInUp 1s ease-out 3.5s forwards;
+        /* ── FINAL MESSAGE ── */
+        .final-wrap {
+            position: relative;
+            z-index: 10;
+            padding: 32px 16px 60px;
             opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .back-button a {
-            display: inline-block;
-            padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Raleway', sans-serif;
+        .final-wrap.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .final-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 26px;
+            padding: 36px 24px 32px;
+            border: 1px solid rgba(255, 77, 109, 0.25);
+            box-shadow: 0 20px 60px rgba(255, 77, 109, 0.12), 0 0 0 1px rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .final-heart-row {
+            font-size: 28px;
+            letter-spacing: 6px;
+            margin-bottom: 22px;
+        }
+
+        .final-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 26px;
+        }
+
+        .final-text {
             font-size: 16px;
+            line-height: 1.85;
+            color: rgba(255, 255, 255, 0.88);
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .final-text em {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        .final-signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--primary);
+            font-style: italic;
+            margin-top: 28px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 13px 28px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid rgba(255, 255, 255, 0.22);
+            border-radius: 50px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
             font-weight: 500;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            letter-spacing: 0.5px;
+            transition: background 0.3s, border-color 0.3s;
         }
 
-        .back-button a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        .back-btn:active {
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        /* Efeito de brilho suave */
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
-            }
-            50% {
-                box-shadow: 0 25px 90px rgba(255, 100, 150, 0.4);
-            }
+        /* ── UTILITIES ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        #container {
-            animation: containerFadeIn 1.2s ease-out, glow 5s ease-in-out infinite;
-        }
-
-        /* Responsivo */
-        @media (max-width: 600px) {
-            #container {
-                padding: 35px 25px;
-            }
-
-            #heart {
-                width: 90px;
-                height: 85px;
-            }
-
-            #heart::before,
-            #heart::after {
-                width: 47px;
-                height: 72px;
-            }
-
-            #message p:nth-child(1) {
-                font-size: 28px;
-            }
-
-            #message p:not(:first-child) {
-                font-size: 16px;
-                text-align: center;
-            }
-
-            #message p:last-child {
-                font-size: 20px;
-            }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-18px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <!-- Partículas de coração flutuantes -->
+
+    <!-- Floating hearts (created by JS) -->
     <script>
-        const hearts = ['❤️', '💕', '💖', '💗', '💓', '💝'];
-        for(let i = 0; i < 20; i++) {
-            const heartParticle = document.createElement('div');
-            heartParticle.className = 'heart-particle';
-            heartParticle.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-            heartParticle.style.left = Math.random() * 100 + '%';
-            heartParticle.style.animationDuration = (Math.random() * 15 + 20) + 's';
-            heartParticle.style.animationDelay = Math.random() * 8 + 's';
-            heartParticle.style.fontSize = (Math.random() * 15 + 15) + 'px';
-            document.body.appendChild(heartParticle);
+        const emos = ['❤️','💕','💖','💗','💓','💝','🩷'];
+        for (let i = 0; i < 14; i++) {
+            const el = document.createElement('div');
+            el.className = 'heart-particle';
+            el.textContent = emos[Math.floor(Math.random() * emos.length)];
+            el.style.cssText = `
+                left:${Math.random()*100}%;
+                animation-duration:${Math.random()*22+28}s;
+                animation-delay:${Math.random()*18}s;
+                font-size:${Math.random()*12+11}px;
+            `;
+            document.body.appendChild(el);
         }
     </script>
 
-    <div id="container">
-        <div id="heart"></div>
-        <div id="message">
-            <p>Meu Amor</p>
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-badge">31 de março de 2024 &nbsp;·&nbsp; o dia que tudo começou</div>
 
-            <p>
-                Desde o momento em que você entrou na minha vida, tudo ganhou um novo significado. 
-                Cada amanhecer traz a alegria de saber que você existe, que você está comigo, 
-                e que nosso amor é real e verdadeiro.
-            </p>
-
-            <p>
-                Você é a pessoa que eu escolho todos os dias. Não apenas por quem você é, 
-                mas por quem eu me torno quando estou ao seu lado. Você desperta em mim o melhor, 
-                me faz querer ser uma pessoa melhor, mais forte, mais amorosa.
-            </p>
-
-            <p>
-                Quando olho nos seus olhos, vejo meu futuro. Vejo nossa história sendo escrita 
-                com momentos de cumplicidade, risadas, abraços apertados e beijos que fazem o 
-                tempo parar. Você é meu lar, meu porto seguro, minha paz em meio ao caos.
-            </p>
-
-            <p>
-                Eu quero estar ao seu lado em cada momento. Nos dias de sol e nos dias de tempestade. 
-                Quero segurar sua mão e caminhar contigo pela vida, construindo nossos sonhos, 
-                superando desafios e celebrando cada conquista juntos. Você não é apenas meu amor, 
-                você é minha melhor amiga, minha parceira, minha alma gêmea.
-            </p>
-
-            <p>Te amo. Para sempre. ❤️</p>
+        <div class="hero-heart-wrap">
+            <svg class="heart-svg" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 85 C50 85 5 52 5 27 C5 14 15 5 27 5 C36 5 44 10 50 18 C56 10 64 5 73 5 C85 5 95 14 95 27 C95 52 50 85 50 85Z"
+                      fill="url(#hg)" />
+                <defs>
+                    <linearGradient id="hg" x1="5" y1="5" x2="95" y2="85" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#ff758f"/>
+                        <stop offset="100%" stop-color="#ff2d55"/>
+                    </linearGradient>
+                </defs>
+            </svg>
         </div>
 
-        <div class="back-button">
-            <a href="index.html">← Voltar</a>
+        <h1 class="hero-title">2 Anos<br>com Maísa</h1>
+        <p class="hero-subtitle">Uma história linda que ainda está sendo escrita, página por página, dia por dia.</p>
+
+        <div class="scroll-hint">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+            nossas memórias
+        </div>
+    </section>
+
+    <!-- ── TIMELINE ── -->
+    <div class="section-header">
+        <h2>Nossas memórias</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="moments">
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20240609_171858.jpg" alt="Junho 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Junho de 2024</p>
+                    <p class="moment-caption">Os primeiros capítulos da nossa história. Cada olhar, cada sorriso seu — tudo era novo e ao mesmo tempo já parecia <em>lar</em>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20240926_131756.jpg" alt="26 de setembro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">26 de setembro de 2024</p>
+                    <p class="moment-caption">Com você, até os dias comuns se tornam <em>especiais</em>. Esse é um dos muitos momentos que carrego no coração.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20240926_145425.jpg" alt="26 de setembro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">26 de setembro de 2024</p>
+                    <p class="moment-caption">Cada fotografia nossa é uma prova do quanto somos bonitos juntos. <em>Não consigo imaginar esses momentos com mais ninguém.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20240927_173928.jpg" alt="27 de setembro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">27 de setembro de 2024</p>
+                    <p class="moment-caption">Você ilumina qualquer lugar onde está. Estar ao seu lado é um privilégio que nunca me canso de agradecer.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20240928_063915.jpg" alt="28 de setembro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">28 de setembro de 2024</p>
+                    <p class="moment-caption">Acordar sabendo que você existe na minha vida já é motivo de sorriso. <em>Você é a melhor parte dos meus dias.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20240928_095329.jpg" alt="28 de setembro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">28 de setembro de 2024</p>
+                    <p class="moment-caption">O tempo para quando estamos assim juntos. Quero que esses momentos durem <em>para sempre</em>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20241005_095917_TIMEBURST4.jpg" alt="Outubro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Outubro de 2024</p>
+                    <p class="moment-caption">Com você aprendi que os melhores momentos não precisam de ocasião especial. <em>Qualquer dia com você já é especial.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20241116_150924.jpg" alt="Novembro de 2024" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Novembro de 2024</p>
+                    <p class="moment-caption">Nosso amor aquece até os dias mais frios. Obrigado por estar ao meu lado e tornar tudo mais leve e bonito.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20250104_130347.jpg" alt="Janeiro de 2025" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Janeiro de 2025</p>
+                    <p class="moment-caption">Um novo ano chegou e a única certeza que eu precisava era a sua presença. <em>Você é o começo de tudo de bom.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/carro.jpeg" alt="Março de 2025" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Março de 2025</p>
+                    <p class="moment-caption">Nosso carro novo — uma conquista nossa, construída juntos. Com você aprendi que os sonhos ficam muito mais bonitos quando a gente realiza <em>de mãos dadas</em>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20250806_221346.jpg" alt="Agosto de 2025" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Agosto de 2025</p>
+                    <p class="moment-caption">Quase todos os dias juntos na academia — e mesmo no cansaço, do seu lado tudo vale a pena. <em>Treinar com você é o melhor treino que existe.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/IMG_20250927_130925.jpg" alt="Setembro de 2025" loading="lazy">
+                <div class="moment-body">
+                    <p class="moment-date">Setembro de 2025</p>
+                    <p class="moment-caption">Um ano e meio repleto de cumplicidade, risadas e amor. <em>Ainda bem que te escolhi.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment" id="moment-heic-1">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/urubici.png" alt="Novembro de 2025" loading="lazy"
+                     onerror="this.closest('.moment').querySelector('.moment-photo-placeholder').style.display='flex'; this.style.display='none';">
+                <div class="moment-photo-placeholder" style="display:none;">
+                    <span>📸</span>
+                    <p>Novembro de 2025</p>
+                </div>
+                <div class="moment-body">
+                    <p class="moment-date">Novembro de 2025</p>
+                    <p class="moment-caption">Cheio de gratidão por tudo que construímos juntos. Você me ensina todos os dias o que é <em>amor de verdade</em>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="moment" id="moment-heic-2">
+            <div class="moment-card">
+                <img class="moment-photo" src="img/ano_novo.png" alt="Ano Novo 2026" loading="lazy"
+                     onerror="this.closest('.moment').querySelector('.moment-photo-placeholder').style.display='flex'; this.style.display='none';">
+                <div class="moment-photo-placeholder" style="display:none;">
+                    <span>🥂</span>
+                    <p>Virada de ano de 2026</p>
+                </div>
+                <div class="moment-body">
+                    <p class="moment-date">1º de janeiro de 2026</p>
+                    <p class="moment-caption">Virada de ano ao seu lado — a melhor forma de começar um novo capítulo. Que 2026 seja <em>nosso</em>.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ── FINAL MESSAGE ── -->
+    <div class="final-wrap">
+        <div class="final-card">
+            <div class="final-heart-row">❤️ 💕 ❤️</div>
+            <p class="final-title">Maísa, meu amor</p>
+
+            <p class="final-text">
+                Dois anos se passaram e, olhando essas fotos, fico impressionado com o quanto crescemos juntos. Você entrou na minha vida e transformou tudo — não apenas os momentos especiais, mas os dias comuns, as manhãs, as conversas, os planos.
+            </p>
+            <p class="final-text">
+                Você é a pessoa que eu escolho <em>todos os dias</em>. Com quem quero dividir cada conquista, cada desafio, cada amanhecer. Você é meu lar, minha paz, meu maior amor.
+            </p>
+            <p class="final-text">
+                Obrigado por cada sorriso, por cada abraço, por cada momento vivido. Esses dois anos foram os mais lindos da minha vida — e quero passar <em>todos os outros</em> ao seu lado.
+            </p>
+
+            <p class="final-signature">Te amo. Para sempre. ❤️</p>
+
+            <a class="back-btn" href="index.html">← Voltar ao início</a>
         </div>
     </div>
+
+    <script>
+        // Scroll-triggered animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.moment, .final-wrap').forEach(el => observer.observe(el));
+
+        // Hide scroll hint on scroll
+        const hint = document.querySelector('.scroll-hint');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) hint.style.opacity = '0';
+        }, { passive: true });
+    </script>
 
 </body>
 </html>
